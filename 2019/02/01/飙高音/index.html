@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Lamb Chops,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;”C#就是C的4个＋。”这是我在这个领域听到的第一个觉得幽默的描述。虽然描述没什么对的。  &amp;emsp;&amp;emsp;终于要休假了，正好写一篇post对这段时间的学习做一个总结。 &amp;emsp;&amp;emsp;在我刚工作的那一年，还没入职，妈妈给了我一块芝士：也许你可以思考一下，这个世界上有没有什么东西是比钱更值得追求的。我找了很久，可能现在开始有了一些答案，可能以后这个答案会更">
+<meta name="keywords" content="Lamb Chops">
+<meta property="og:type" content="article">
+<meta property="og:title" content="飙高音">
+<meta property="og:url" content="https://davisnathan.github.io/2019/02/01/飙高音/index.html">
+<meta property="og:site_name" content="Nathan Studio">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;”C#就是C的4个＋。”这是我在这个领域听到的第一个觉得幽默的描述。虽然描述没什么对的。  &amp;emsp;&amp;emsp;终于要休假了，正好写一篇post对这段时间的学习做一个总结。 &amp;emsp;&amp;emsp;在我刚工作的那一年，还没入职，妈妈给了我一块芝士：也许你可以思考一下，这个世界上有没有什么东西是比钱更值得追求的。我找了很久，可能现在开始有了一些答案，可能以后这个答案会更">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/03/04/5c7c977be1c3d.jpg">
+<meta property="og:updated_time" content="2019-03-04T11:13:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="飙高音">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;”C#就是C的4个＋。”这是我在这个领域听到的第一个觉得幽默的描述。虽然描述没什么对的。  &amp;emsp;&amp;emsp;终于要休假了，正好写一篇post对这段时间的学习做一个总结。 &amp;emsp;&amp;emsp;在我刚工作的那一年，还没入职，妈妈给了我一块芝士：也许你可以思考一下，这个世界上有没有什么东西是比钱更值得追求的。我找了很久，可能现在开始有了一些答案，可能以后这个答案会更">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/04/5c7c977be1c3d.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://davisnathan.github.io/2019/02/01/飙高音/">
+
+
+
+
+
+  <title>飙高音 | Nathan Studio</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/davisNathan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nathan Studio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">welcome</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davisnathan.github.io/2019/02/01/飙高音/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Davis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nathan Studio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">飙高音</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-01T10:26:24+08:00">
+                2019-02-01
+              </time>
+            
+
+            
+            
+            
+            
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Thinking/" itemprop="url" rel="index">
+                    <span itemprop="name">Thinking</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://i.loli.net/2019/03/04/5c7c977be1c3d.jpg" rel="gallery_cjszipcrp0016qvjyqtti67v8" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.loli.net/2019/03/04/5c7c977be1c3d.jpg" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <blockquote>
+<p>&emsp;&emsp;”C#就是C的4个＋。”这是我在这个领域听到的第一个觉得幽默的描述。虽然描述没什么对的。</p>
+</blockquote>
+<p>&emsp;&emsp;终于要休假了，正好写一篇post对这段时间的学习做一个总结。</p>
+<p>&emsp;&emsp;在我刚工作的那一年，还没入职，妈妈给了我一块芝士：<strong>也许你可以思考一下，这个世界上有没有什么东西是比钱更值得追求的。</strong>我找了很久，可能现在开始有了一些答案，可能以后这个答案会更丰满。</p>
+<p>&emsp;&emsp;我知道一些很厉害的程序员，在他们的博客中可以看到他们早年就埋下了对计算机的爱。之后他们也从事自己喜欢的职业，研究自己喜欢的方向。很长一段时间里，我觉得自己不适合当程序员，我没有像他们这样这么热爱计算机，也没有像他们这样这么早年就埋下了种子。我学计算机纯粹是巧合，只是当时觉得自己分数比较高，就想去分数高的学院，然后听了家人建议，选了计算机，对于当时的我来说，计算机，会计，选哪个都是一样的。</p>
+<p>&emsp;&emsp;大学的时候，估计老师觉得我很头疼，因为我总是先做自己的选择。比如选择这节课不要上了，去看点美好的东西，比如在一个咖啡厅坐一个下午，看风景，发呆。比如选择去打球，可以每天打7，8个小时的篮球，然后在课堂睡着，不是我不想听，真的好困。几乎每一门课开始davis表现得非常良好，老师会觉得他学得真快。emmmm，对的这是我的一个优点（以后我写简历的时候都会写上：能快速学习新事物新技能。这是真的，但是HR是不是以为这是一句客套话，他们太天真了，低估了我的学习能力，直到后来恍然大悟我已经学了这么多东西了。）</p>
+<p>&emsp;&emsp;大学的时候没有能老练的掌握这把双刃剑，比如自己开始上了一门课，发现已经掌握了这个技巧，之后的逻辑只要按照这个来解就可以了，然后就会选择去做其他事情。其实后来想，要是再做选择，可能会选择礼貌的听完课，因为知道当时的自己多么骄傲。当时我却一直在想，为什么课要分散上，分散上就不容易记住，集中上一个月就可以学完这本书，然后做东西，为什么不把课商业化，竞争话，这样子才有利于促进课程的改良和与时俱进。等等等等，诸多的想法。</p>
+<p>&emsp;&emsp;但是我无疑是上了个最正确的大学，学风开放，充满活力，当然还有漂亮的风景。我的老师，真的很nice，十分包容我，并不打压我的个性，我称之为“个性”的东西，时常让人想起来会很难过，因为其他人对自己的爱太多。就像一句话说的：你对那些对你不公平的人好，就好像把炭火推到了他们头上。我常是这样的感觉。</p>
+<p>&emsp;&emsp;当时周围的一些群体其实引起了我的不满。有些同学总是追求学分，根本不知道计算机的精妙，他能考很高的分，但是他的分数并不能说服我，当时称他们不知道灵魂。还有一些人，经常实践，但是不愿意和别人分享，很害怕别人超过他，总是打听别人在学习什么，然后自己背后开小灶。还有些人，总是喜欢表现自己，就是过于表现自己，但是“过于”的时候，就是破洞的时候。这三类，davis都敬而远之。我总是默默坐在班里最后一排，思考着一些事情。之后得知，思考的那些事情叫做：<strong>宽广的心</strong>。</p>
+<p>&emsp;&emsp;临近毕业的时候，helen小姨发了以色列的研究生申请的网站，问我有没有想法。她是我尊敬的长辈，是那种从小时候第一次见到她就十分尊敬，直到现在，甚至直到未来。当时觉得目前自己学的东西没有用出来，所以就算真的去学了，也是不能很好的把握自己究竟想要什么。于是，我工作了。</p>
+<p>&emsp;&emsp;没有参加校招，因为在学校的时候想:我读书的日子就这么点了，工作的时间会很长，我要珍惜他，也没参加实习，理由同上。幸运的是上帝的供应，很快在社会招聘中找到一份合适的工作，hadoop开发。也源于大学时对算法，对数据结构，这些课的兴趣，使我顺利通过面试。</p>
+<p>&emsp;&emsp;那段时间，想了很多，我想我为什么要编程，为什么要坐在办公室。我还很年轻，不应该在这里成为别人赚钱的机器，只是做一些执行任务，读书的时候我可是“帮派人物”，怎么能坐在这里。那时候查了很多人的经历资料，比如马云，比尔盖茨，扎克伯格，霍金，爱因斯坦，等等，我把他们的博客，论文，或者一些书籍读了个遍，希望能寻找一些线索，使我能快速致富。经过漫长的4个月的阅读，搜寻，总结，只得出了一个结论：因为他们在生命这个历史长流里，正好在那个时刻被上帝拣选，去做这件事情，然后刚好历史需要这个事情，然后致富。所以说，这四个月，虽然每天读圣经的时候能看到上帝怎么带领以色列人来到迦南地，虽然心里很得安慰，自己的眼光依然定睛在金钱上。到头来调查结果和读圣经知道的一样：<strong>敬畏上帝</strong>。</p>
+<p>&emsp;&emsp;为什么我想快速致富，当时的思维是这样：<br><strong>致富 -》 自由的工作 —》 愉快的生活</strong>    意味着不用被许多东西辖制。<br>但是我错了，我以为致富能导致自由的工作，自由的工作能导致愉快的生活，而且似乎对“自由”和“愉快”产生了某些误解。我在想快速致富真的能解决目前所面临的问题吗。</p>
+<p>&emsp;&emsp;不久之后我就从这家公司离职，不过奉劝大家别去这种老套的IT公司，因为他们没有实际能力去创造富余生产力，而是瓜分了某个行业里的一块小蛋糕。风气呆板，不利于程序员发展。</p>
+<p>&emsp;&emsp;一个月的休假时间里，又想了很多，总结出自己双刃剑的毛病：不够顺服，不够知道次序。上帝岂是使人混乱的神呢，他是顺服的。</p>
+<p>&emsp;&emsp;不久之后进入一家互联网公司。面试的时候，有一位问了我一个问题：你的成就感来自哪里？我从来没想过这个问题，我很想回答：我不需要成就感。但事实上，那天的回答是：<strong>我在意我的品质，我会成为一个什么样的人这个很重要。</strong>面试结束那天，思考良久，这句话解决了我这么久以来的一个疑问：我想要成为一个什么样的人。很感谢那一天的面试。</p>
+<p>&emsp;&emsp;接下来的很长时间里，又在思考那个问题，反复在如何快速致富和如何顺服上帝的带领之间磨炼。我很感谢这家公司的团队，他们帮助了我能坚守好的品格，对不良的风气说不。在挣扎了一年后的某一天，看到朋友圈的几个人，非常努力的工作，也非常享受自己的工作，我很羡慕这样的状态。为什么我不能在工作中敬拜，我要在工作中尽情享受上帝的创造力。</p>
+<p>&emsp;&emsp;<strong>上帝无疑是最伟大的程序员，他只写了个万有引力的函数，所有的事物都被互相吸引运转。</strong>曾经我觉得这是一个十分呆板的工作，技术飞速更新，但是对于个人的表达，个人其他方面的才干打磨得太少了。我曾认为我不会成为一个程序员，因为他不能满足我对自己的定位。我想浪漫的工作，我想和别人交流，我想创造一个非常棒的环境大家享受这样的快乐…不断地祷告，不断的祈求，希望上帝给我工作上有所指引。终于在某一天，突然醒悟过来，我不是就在做这样一个伟大的工作吗。</p>
+<p>&emsp;&emsp;认真的祷告每一天，努力的寻求着，寻求真正想要追寻的是什么。很认真的工作，很认真的了解技术情况，很认真看商业竞争。我对这些的努力表示感谢。我想我知道了，这个答案我早就知道，但却忘记了：<strong>我想和大家一起体会这样的生命，体会生命无限的可能，互相的鼓舞，我想做出点什么东西能帮助别人更好的享受生命。</strong></p>
+<p>&emsp;&emsp;我能做什么呢？我开始把自己的阅读和周围的小伙伴分享，小伙伴离开这个团队了，我就搭了一个blog和大家分享，直到现在这个blog每周都有2k的人围观，要知道，这个blog才搭好没多久。我很感谢好奇心，让我坚持遇到新技术的时候能激起我的喜悦，而不是害怕。我很感谢第一份工作，他带来了思考，也带来对于技术，迎难而上还是可以解决的（虽然我不喜欢这种强行迎难而上的感觉）。我很感谢第二份工作的一些内容，它几乎使我成为一个杂学家，太多的知识不知道，涉及电影，电视，音乐，名人等等等等，我每天查询大量的网页，判断数据的信息，在我浏览大量网页的时候捕捉大量信息促使我更深思考，无疑，我觉得无聊的事情，上帝却利用他补足我的缺陷。</p>
+<p>&emsp;&emsp;直到有一天欣赏我的工作，才知道，自己害怕的不是下一个境遇的未知，害怕的是那个一直不敢面对的自己。对于自己太过完美的设定，造成自己对事物缺乏准确的判断。神早就把那最好的礼物赐给我，我却一直不敢打开。曾经很羡慕那些会很多语言的人，觉得可以用来交流，又可以谋生，真好。羡慕数学好的人，他们玩彩票就能养活自己。有一天发现，恩赐，是用来祝福别人的，并不是高举自己。</p>
+<p>&emsp;&emsp;我求的已经得到，我为战争地区的居民募集善款，我通过自己的经历和思考去安慰周围的人，鼓励他们有盼望，相信他们一定能做到。这些有的是通过祝福赐下的，有的是经历了苦难后知晓的。所以，如果你说等到你拥有更多时，会做得更多，我希望你现在就去做你能做的，而且要持续。钱不是你唯一能贡献的东西，无论上帝赐给你什么，请以各种方式分享出去，让他人受惠。无论年纪大小，也无论贫富，每个人都能发挥影响力。</p>
+<p>&emsp;&emsp;从最小的事开始，爸爸告诉我，无论事情有多难，从最小的事开始。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Lamb-Chops/" rel="tag"># Lamb Chops</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/18/Dan计划/" rel="next" title="Dan计划">
+                <i class="fa fa-chevron-left"></i> Dan计划
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/15/内部对话/" rel="prev" title="内部对话">
+                内部对话 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg" alt="Davis">
+            
+              <p class="site-author-name" itemprop="name">Davis</p>
+              <p class="site-description motion-element" itemprop="description">For the first time as a chef</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>

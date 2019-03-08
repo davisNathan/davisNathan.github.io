@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="酱油鸡,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;最近察觉到自己知识上的漏洞，接下来的一个月去打基础去了，可能不频繁更新文章。  &amp;emsp;&amp;emsp;不知道是个人原因还是一种现象，我总是对数据的私密性很敏感。我会尽量不在网络上留下自己的痕迹，避免成为被分析的数据分母。当我看到小米家电周年发布了大数据分析的报表时，我知道，又有未被用户允许的数据被收集了。 &amp;emsp;&amp;emsp;曾经一个产品和我说，他认为数据收集没什么">
+<meta name="keywords" content="酱油鸡">
+<meta property="og:type" content="article">
+<meta property="og:title" content="内部对话">
+<meta property="og:url" content="https://davisnathan.github.io/2019/02/15/内部对话/index.html">
+<meta property="og:site_name" content="Nathan Studio">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;最近察觉到自己知识上的漏洞，接下来的一个月去打基础去了，可能不频繁更新文章。  &amp;emsp;&amp;emsp;不知道是个人原因还是一种现象，我总是对数据的私密性很敏感。我会尽量不在网络上留下自己的痕迹，避免成为被分析的数据分母。当我看到小米家电周年发布了大数据分析的报表时，我知道，又有未被用户允许的数据被收集了。 &amp;emsp;&amp;emsp;曾经一个产品和我说，他认为数据收集没什么">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-03-04T09:50:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="内部对话">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;最近察觉到自己知识上的漏洞，接下来的一个月去打基础去了，可能不频繁更新文章。  &amp;emsp;&amp;emsp;不知道是个人原因还是一种现象，我总是对数据的私密性很敏感。我会尽量不在网络上留下自己的痕迹，避免成为被分析的数据分母。当我看到小米家电周年发布了大数据分析的报表时，我知道，又有未被用户允许的数据被收集了。 &amp;emsp;&amp;emsp;曾经一个产品和我说，他认为数据收集没什么">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://davisnathan.github.io/2019/02/15/内部对话/">
+
+
+
+
+
+  <title>内部对话 | Nathan Studio</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/davisNathan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nathan Studio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">welcome</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davisnathan.github.io/2019/02/15/内部对话/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Davis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nathan Studio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">内部对话</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-15T10:23:35+08:00">
+                2019-02-15
+              </time>
+            
+
+            
+            
+            
+            
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/Thinking/" itemprop="url" rel="index">
+                    <span itemprop="name">Thinking</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>&emsp;&emsp;最近察觉到自己知识上的漏洞，接下来的一个月去打基础去了，可能不频繁更新文章。</p>
+</blockquote>
+<p>&emsp;&emsp;不知道是个人原因还是一种现象，我总是对数据的私密性很敏感。我会尽量不在网络上留下自己的痕迹，避免成为被分析的数据分母。当我看到小米家电周年发布了大数据分析的报表时，我知道，又有未被用户允许的数据被收集了。</p>
+<p>&emsp;&emsp;曾经一个产品和我说，他认为数据收集没什么，只有大量用户行为数据分析，才能产生有效的数据现象，个人数据没什么用。我只能对他知道的稀少和自负感到无语。</p>
+<p>&emsp;&emsp;个人信息是多么的重要，刚流行社交软件的时候，大概高中的年纪，自己业余做的事情就是分析别人发布信息的内容，推测他们的生活和人际关系。（感觉暴露了自己的爱好）。我常常看别人发布的动态，就好像沉迷福尔摩斯或者柯南的少年，寻找蛛丝马迹，当然只是为了好玩，不会采取任何行动，仅仅是分析的乐趣。这时候我明白，发布了信息，其实是有被看的风险，并不是发布了就结束了。</p>
+<p>&emsp;&emsp;这样的信息包含了发布者想表达的信息内容，和被忽视的细节。我们做一个假设，假设有一个集合a，是无限容量的，当我不断往集合加入真实的信息，这时候就能大概组成一个时间链条，如此，常听到我妈爆发出：“你是怎么知道的？！”，其实是大量有效数据叠加的验证，增加了预测事物正确的概率。</p>
+<p>&emsp;&emsp;再后来，你会看到一些错误的信息，比如有时候人们会因为社交影响力，发布一些不那么真实的信息。比如去年旅行时的照片自己的身材比较好，然后今年发布，假装是今年发生的事情。或者不是自己做的事情，正好遇到了，假装是自己做的。类似于这种时空间错乱的信息出现，干扰了许多正确项，但是你仍然可以通过其他可靠的验证数据来预测。</p>
+<p>&emsp;&emsp;假设有集合b，c，d。这三个分别是你亲密关系人的集合，装了他们自己的数据，假设这里面的数据正确，那么就可以叠加排除你的错误集合。并且，对于你的数据集合A，仍然可以从里面挑选出可靠的信息去排除A里错误的信息，得到干净的集合a。大量信息的叠加验证，可以更准确的模拟行为，换句话说，你处于被监控的风险。</p>
+<p>&emsp;&emsp;我们不小心泄露的数据密码，比如我发文章的时间，可以推断我在的时区，我说的话，用的观点，观察的事物，更甚，我从来没有说的话，没有用的观点，可以反推我对这方面的兴趣爱好偏低或者有其他的原因，你很快会得到一张我的人物原型。所以在公众网络，也许你的形象有专门的人去运营，但不免我们会使用数据并且产生数据。</p>
+<p>&emsp;&emsp;这时候不得不提出一个词：“数据滥用”。<strong>我不能够在发生数据泄露或是产生数据风险的时候才思考这个问题，而是一开始就要思考。</strong>就像做系统不是最后考虑安全风险，而是一开始就要考虑。<strong>我们怎么做才能避免对用户造成伤害。用户不是人质，不要扣留他注销的自由，也不用用真实数据来换取这种自由（我是说支付宝注销某项功能时居然要提供个人有效证件信息的拍照），当然，我们自己的数据并没授权给谁，所以也要有从磁盘中抹掉的自由。</strong></p>
+<p>&emsp;&emsp;感觉很讽刺，这些软件居然需要用这样卑劣的手段留存用户，我是说为什么不把心思放在创造性的支持上。合理的反馈方式能促进系统的完善，但是如何定义数据的合理取用，以什么方式，什么形态取用。我们需要建立道德产品，不能向盲目扩张换取高额利润妥协，我们需要建立人权和尊重在产品中。</p>
+<p>&emsp;&emsp;算法是有局限性的，比如推荐算法，他其实只在一定程度上满足用户要求，但是到了后来就会有瓶颈。当我满足了基本需求，其实还有精神需求。我看到给我推荐的商品确实很不错，是我的风格，但是总是看会腻。但当我看到朋友的购物界面，哇，和我的完全不一样，他的东西真好玩。我们的风格虽然被算法化了，但是他却不能推荐给我们精神上开拓的商品，在一定时间后会厌倦他的推荐，目前算法推理不出来好奇的新事物。就好像一种感觉，没看见的时候没觉得有什么，当看见的时候觉得很棒，可是算法个性化推荐之后，少了“看见”这一步，失去了很多乐趣。</p>
+<p>&emsp;&emsp;不仅是算法的局限性，数据也会有偏见的风险。坦白说数据会有一定程度上的歧视。比如性别上，数据分析会告诉你，工程师这一职位男性的概率是70%+，教育医疗上女性的概率是68%+。数据会显示宗教，种族，年龄，群体的倾向。这些倾向在实名制的网络世界里，也许会给人们带来麻烦，也许他们会被挑出来抨击。</p>
+<p>&emsp;&emsp;也不慌，圣经上记着说：属灵人参透万事，但人却看不透他。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/酱油鸡/" rel="tag"># 酱油鸡</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/01/飙高音/" rel="next" title="飙高音">
+                <i class="fa fa-chevron-left"></i> 飙高音
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/04/乡愁/" rel="prev" title="乡愁">
+                乡愁 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg" alt="Davis">
+            
+              <p class="site-author-name" itemprop="name">Davis</p>
+              <p class="site-description motion-element" itemprop="description">For the first time as a chef</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>

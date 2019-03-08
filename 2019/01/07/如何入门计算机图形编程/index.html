@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="fried-rice,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;自从我在私密消息中邀请大家在Twitter上可以向我询问计算机图形相关的问题后，我经常被问到这一类问题“我怎么入门图形编程”由于我厌倦了一遍又一遍的回答此类问题，我将在这篇文章中汇总我对此问题的所有建议。 建议一：从光线追踪和光栅开始&amp;emsp;&amp;emsp;这些年来涌现出许多针对GPU硬件编码的API：Direct3D，OpenGL，Vulkan，Metal，WebGL等。">
+<meta name="keywords" content="fried-rice">
+<meta property="og:type" content="article">
+<meta property="og:title" content="如何入门计算机图形编程">
+<meta property="og:url" content="https://davisnathan.github.io/2019/01/07/如何入门计算机图形编程/index.html">
+<meta property="og:site_name" content="Nathan Studio">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;自从我在私密消息中邀请大家在Twitter上可以向我询问计算机图形相关的问题后，我经常被问到这一类问题“我怎么入门图形编程”由于我厌倦了一遍又一遍的回答此类问题，我将在这篇文章中汇总我对此问题的所有建议。 建议一：从光线追踪和光栅开始&amp;emsp;&amp;emsp;这些年来涌现出许多针对GPU硬件编码的API：Direct3D，OpenGL，Vulkan，Metal，WebGL等。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/01/16/5c3e9fec10c02.png">
+<meta property="og:updated_time" content="2019-01-16T11:17:04.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="如何入门计算机图形编程">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;自从我在私密消息中邀请大家在Twitter上可以向我询问计算机图形相关的问题后，我经常被问到这一类问题“我怎么入门图形编程”由于我厌倦了一遍又一遍的回答此类问题，我将在这篇文章中汇总我对此问题的所有建议。 建议一：从光线追踪和光栅开始&amp;emsp;&amp;emsp;这些年来涌现出许多针对GPU硬件编码的API：Direct3D，OpenGL，Vulkan，Metal，WebGL等。">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/16/5c3e9fec10c02.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://davisnathan.github.io/2019/01/07/如何入门计算机图形编程/">
+
+
+
+
+
+  <title>如何入门计算机图形编程 | Nathan Studio</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/davisNathan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nathan Studio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">welcome</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davisnathan.github.io/2019/01/07/如何入门计算机图形编程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Davis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nathan Studio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">如何入门计算机图形编程</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-07T11:25:19+08:00">
+                2019-01-07
+              </time>
+            
+
+            
+            
+            
+            
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/HackerNews/" itemprop="url" rel="index">
+                    <span itemprop="name">HackerNews</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://i.loli.net/2019/01/16/5c3e9fec10c02.png" rel="gallery_cjszipcrm0014qvjy1duruxn2" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.loli.net/2019/01/16/5c3e9fec10c02.png" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <p>&emsp;&emsp;自从我在私密消息中邀请大家在Twitter上可以向我询问计算机图形相关的问题后，我经常被问到这一类问题“我怎么入门图形编程”由于我厌倦了一遍又一遍的回答此类问题，我将在这篇文章中汇总我对此问题的所有建议。</p>
+<h3 id="建议一：从光线追踪和光栅开始"><a href="#建议一：从光线追踪和光栅开始" class="headerlink" title="建议一：从光线追踪和光栅开始"></a>建议一：从光线追踪和光栅开始</h3><p>&emsp;&emsp;这些年来涌现出许多针对GPU硬件编码的API：Direct3D，OpenGL，Vulkan，Metal，WebGL等。这些API可能很难入门，因为他们通常需要许多样板代码，我认为这些对初学者是很不友好的。在这些API中，即使想知道如何画出一个简单的三角形，对于初学者来说都是困难重重。当然，另一种代替方式是使用游戏引擎，好比像Unity和Unreal Engine。这时，游戏引擎将承担调用图形接口这样一个乏味的工作。但是我认为即使是一个游戏引擎也让初学者有得学了，其实事情还可以再简单一些。</p>
+<p>&emsp;&emsp;我比较推荐大家自己动手写一个光线追踪器或者一个光栅器开始（当然，两者都写最好啦），简单的说，光线跟踪器是一个程序，他通过从屏幕中的每个像素发送光线来呈现3D场景并进行一系列的交集计算和物理照明计算，用以计算出每个像素的最终颜色。光栅器用于渲染3d场景（多数情况下是一大堆三角形，哈哈）就像这样：对于每一个我们想画出的三角形，我们计算出屏幕中的哪个像素需要这样的三角形覆盖，之后对于每一个像素，我们计算光线如何在这个点上产生作用效果，这个点是对应像素的三角形上的点。通过计算光的相互影响，我们得到了像素的最终颜色。光栅化比光线追踪的速度快得多得多，它是一种现代GPU用于绘制3D场景的算法。光栅化是一种简单的手段，使我们使用cpu就能完成而并非gpu。</p>
+<p>&emsp;&emsp;光栅化和光线跟踪都是两种十分简单的算法，对于新手来说，实现这个比使用现有的图形API要容易得多。此外，通过着手实现这一个或者两个算法，新手会知道许多计算机图形学的基础概念，比如点积，叉乘，变换矩阵，相机等等。无需浪费时间在现有的图形API上，我相信这些令人沮丧的图形API，使许多新手止步在开始。同时，开始着手于你的第一个计算机图形项目，通过实现光线跟踪器和光栅是一个很好的方式，使你能越过最初的障碍。</p>
+<p>&emsp;&emsp;在学习图形学API之前先编写光栅器的一个很大的优势是，当事情不可避免的在某个地方出现问题时能更容易调试，因为这些API基本只提供一个以GPU为基础的光栅器接口（是的，这是一个很好的简化，因为他们提供了访问的东西，例如着色器）。由于你知道这些API是如何在背后工作的，这就使debug变得很容易了。</p>
+<p>&emsp;&emsp;当你写光线追踪器，我推荐阅读 Peter Shirley的<a href="https://twitter.com/peter_shirley/status/984947257035243520?lang=da" target="_blank" rel="noopener"><strong>书</strong></a>。当你写光栅器，有如下资源：<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation" target="_blank" rel="noopener"><strong>1</strong></a>，<a href="https://github.com/ssloy/tinyrenderer" target="_blank" rel="noopener"><strong>2</strong></a>，<a href="https://tayfunkayhan.wordpress.com/2018/11/24/rasterization-in-one-weekend-part-i/" target="_blank" rel="noopener"><strong>3</strong></a>，<a href="http://www.gabrielgambetta.com/computer-graphics-from-scratch/introduction.html" target="_blank" rel="noopener"><strong>4</strong></a>。</p>
+<h3 id="建议二：学习必要的数学"><a href="#建议二：学习必要的数学" class="headerlink" title="建议二：学习必要的数学"></a>建议二：学习必要的数学</h3><p>&emsp;&emsp;我的第二个建议是，你应该学习计算机图形学所需的数学知识。我在作为图形程序员的日常工作中使用数学概念和技术的数量非常小，所以这并不像你想的那样会有很大的工作量。当你是个新手，一个称为“线性代数”的数学领域将是你选择的主要工具。你很可能会用到的线性代数的概念如下：</p>
+<ul>
+<li><p>点积</p>
+</li>
+<li><p>叉乘</p>
+</li>
+<li><p>极坐标系</p>
+</li>
+<li><p>矩阵变换（提示：作为图形程序员你将主要使用的只是4X4矩阵，因此，不要花费大量的时间去学习大型矩阵）</p>
+</li>
+<li><p>旋转矩阵，缩放矩阵，平移矩阵，四元数</p>
+</li>
+<li><p>标准正交积</p>
+</li>
+<li><p>交点计算，一般是计算一条射线和球，或者平面，或者三角形之间的焦点</p>
+</li>
+<li><p>在我的经验中，行主序和列主序的细节很容易使初学者迷惑，因此要真的弄清楚这两个概念，这篇<a href="https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/geometry/row-major-vs-column-major-vector" target="_blank" rel="noopener"><strong>文章</strong></a>提供了很好的解释。</p>
+</li>
+<li><p>透视变换矩阵和视图矩阵如何对相机建模呢，这是许多新手都在努力弄清的问题，所以要下功夫把它学仔细和深入来。这里有一篇透视变换矩阵的<a href="https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/projection-matrix-introduction" target="_blank" rel="noopener"><strong>文章</strong></a>，这里则是视图矩阵的<a href="https://www.scratchapixel.com/lessons/mathematics-physics-for-computer-graphics/lookat-function" target="_blank" rel="noopener"><strong>文章</strong></a>。</p>
+</li>
+<li><p>从初级到中级进阶时，以上提到的数据就够用了。一旦你进入物理渲染类似的情形，一种叫“微积分”的数学领域也十分有用，不过这都是后话了。</p>
+</li>
+<li><p>以下是一些线性代数的资源：这本在线书籍叫<a href="http://immersivemath.com/ila/index.html" target="_blank" rel="noopener"><strong>immersive linear algebra</strong></a>。这一视频叫<a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab" target="_blank" rel="noopener"><strong>Essence of linear algebra</strong></a>。这里是<a href="https://learnopengl.com/Getting-started/Transformations" target="_blank" rel="noopener"><strong>OpenGL tutorial</strong></a>。还有一个叫<a href="http://graphicscodex.com/" target="_blank" rel="noopener"><strong>The Graphics Codex</strong></a>。</p>
+</li>
+</ul>
+<h3 id="建议三：绘制第一个三角形时的debug提示"><a href="#建议三：绘制第一个三角形时的debug提示" class="headerlink" title="建议三：绘制第一个三角形时的debug提示"></a>建议三：绘制第一个三角形时的debug提示</h3><p>&emsp;&emsp;一旦你写好一个光栅器或者光线追踪器，会有很大的信心去学习图形API。图形API里的hello world是在屏幕上画一个简单三角形。事实上，绘制第一个三角形是十分困难的，因为需要使用大量必要的样板代码，也因此调试代码对于新手来说异常艰巨。如果在绘制三角形时出现了问题，这时会得到一个黑窗口而不是一个三角形，下面我会列出当我遇到类似问题时的解决步骤。</p>
+<ul>
+<li>通常，问题在于投影和视图矩阵，因为他们极易出错。在顶点着色器中，对于每个顶点上，你首先会使用模型矩阵，然后使用视图矩阵，接着是投影矩阵，最后进行透视划分（尽管最后的划分在后天中运行，而不是显式的进行）。亲自尝试这个过程，理智的检查你的矩阵。如果你想看到顶点，在透视划分之后，它在标准化设备坐标系中，同时，X,Y,Z的范围都在[-1,+1]。如果坐标系的值不在范围内，同时你希望看到的顶点却看不见（因为在范围外的顶点会被硬件剪裁），同时说明你的矩阵有问题。<br>-</li>
+<li><p>检查深度缓冲区是否清除为合理的值。例如，如果你使用D3DCMP_LESS的深度比较函数，然后将深度缓冲区清除为0，那么什么都不会绘制，因为没有东西通过深度测试。总的来说，确认你完全理解深度测试，之后确认你的深度测试设置。</p>
+</li>
+<li><p>确认你正确地将矩阵（例如视图和投影）上载到GPU。这是个常见的意外，你可以在类似于RenderDoc这样的GPU调试器去验证是否上载了矩阵。同样，确保上载所有的顶点数据，因为，错误的数据导致错误的计算结果。</p>
+</li>
+<li><p>对于新手来说背面剔除又是一个需要注意的地方，以OpenGL为例，默认情况下，背面三角形将被隐藏，如果你做了一个背面三角形，同时又想展示它，这时你会找不到它。我建议你在渲染第一个三角形时，不要选择做背面三角形。</p>
+</li>
+<li><p>检查所有图形API返回的错误代码信息，因为他们很有用，如果你有权限，就去启用那些debug能力，比如Vulkan。</p>
+</li>
+<li><p>在图形debug的时候，强烈建议学习使用一些GPU debug工具，比如RenderDoc 或者 Nsight。这些工具提供了你的图形应用在每一步的时候GPU的状态描述，他们可以让你更愉悦的知道是上文提出的注意信息的当前状况，还具有其他功能。所有设置都可以在图形API中进行调整，这样可以更容易地检查程序。我很喜欢RenderDoc的一个特性是，它能展示分段的像素着色。我常使用这个功能。你只需要点击一个像素，RenderDoc会呈现该像素的当前颜色值。逐步执行着色器分步计算功能，能看到该像素是怎么被分配到这个颜色的。Baldur Karlsson的<a href="https://www.youtube.com/user/baldurkarlsson/" target="_blank" rel="noopener"><strong>油管</strong></a>可以让你了解更多RenderDoc 的特性。</p>
+</li>
+</ul>
+<h3 id="建议四：入门项目推荐"><a href="#建议四：入门项目推荐" class="headerlink" title="建议四：入门项目推荐"></a>建议四：入门项目推荐</h3><p>&emsp;&emsp;我觉得最好的提高技能的方式就是自己去实现各种渲染技术，以下是一些项目建议列表，新手可以实现和学习。</p>
+<ul>
+<li><p>用球坐标系做球体，并渲染。</p>
+</li>
+<li><p>实现简单的漫反射和镜面阴影的着色器。</p>
+</li>
+<li><p>定向光，点光源，聚光灯</p>
+</li>
+<li><p>高度图渲染</p>
+</li>
+<li><p>为一个简单的网格格式写一个简单的解释器，如<a href="https://en.wikipedia.org/wiki/Wavefront_.obj_file" target="_blank" rel="noopener"><strong>Wavefront .obj</strong></a>。将它导入程序并呈现他，尤其是尝试导入和呈现带有纹理的网格。</p>
+</li>
+<li><p>实现一个简单的我的世界着色器，渲染我的世界风格的世界是惊人的简单，同时也是很有效的学习。</p>
+</li>
+<li><p>用立方体贴图渲染反射。</p>
+</li>
+<li><p>用阴影贴图渲染反射。</p>
+</li>
+<li><p>实现视体剔除，这是一种简单而且实用的技术。</p>
+</li>
+<li><p>实现粒子系统的渲染。</p>
+</li>
+<li><p>学习如何实现伽马校正</p>
+</li>
+<li><p>实现映射</p>
+</li>
+<li><p>了解如何通过实例渲染去渲染大量的网格</p>
+</li>
+<li><p>使用网格蒙皮对网格进行动画处理。</p>
+</li>
+</ul>
+<p>这里还有一些更先进的技术。</p>
+<ul>
+<li><p>各种后期处理效果。比如，Bloom（使用高斯模糊），SSAO（环境光遮蔽），FXAA（反锯齿处理）。</p>
+</li>
+<li><p>实现延迟着色法，这是一个十分有用的渲染光源的技术。</p>
+</li>
+</ul>
+<p>以上是我对开篇这个话题提供的所有建议。</p>
+<blockquote>
+<p>&emsp;&emsp;点击查看：<a href="https://erkaman.github.io/posts/beginner_computer_graphics.html" target="_blank" rel="noopener"><strong>原文</strong></a>。文中观点为原作者观点，本人译文水平有限，仍在学习改进。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/fried-rice/" rel="tag"># fried-rice</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/02/Maltesers/" rel="next" title="Maltesers">
+                <i class="fa fa-chevron-left"></i> Maltesers
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/14/一种交互介绍-傅里叶变化/" rel="prev" title="一种交互介绍--傅里叶变化">
+                一种交互介绍--傅里叶变化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg" alt="Davis">
+            
+              <p class="site-author-name" itemprop="name">Davis</p>
+              <p class="site-description motion-element" itemprop="description">For the first time as a chef</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#建议一：从光线追踪和光栅开始"><span class="nav-number">1.</span> <span class="nav-text">建议一：从光线追踪和光栅开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建议二：学习必要的数学"><span class="nav-number">2.</span> <span class="nav-text">建议二：学习必要的数学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建议三：绘制第一个三角形时的debug提示"><span class="nav-number">3.</span> <span class="nav-text">建议三：绘制第一个三角形时的debug提示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#建议四：入门项目推荐"><span class="nav-number">4.</span> <span class="nav-text">建议四：入门项目推荐</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="fried-rice,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;傅里叶变换是一个有趣的工具。这篇文章主要内容是：  解释傅里叶变换的作用 它的变形使用 你如何使用它来做些漂亮的东西   文章之后你会对以下问题有个了解：  什么是傅里叶变换 傅里叶变换的一些实用场景 傅里叶变换的一些毫无意义但是又很cool的用法  &amp;emsp;&amp;emsp;我们现在需要先把数学和方程搁置一边，虽然其中蕴含着十分有趣的数学，但是我们最好先从它的实际意义，以及">
+<meta name="keywords" content="fried-rice">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一种交互介绍--傅里叶变化">
+<meta property="og:url" content="https://davisnathan.github.io/2019/01/14/一种交互介绍-傅里叶变化/index.html">
+<meta property="og:site_name" content="Nathan Studio">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;傅里叶变换是一个有趣的工具。这篇文章主要内容是：  解释傅里叶变换的作用 它的变形使用 你如何使用它来做些漂亮的东西   文章之后你会对以下问题有个了解：  什么是傅里叶变换 傅里叶变换的一些实用场景 傅里叶变换的一些毫无意义但是又很cool的用法  &amp;emsp;&amp;emsp;我们现在需要先把数学和方程搁置一边，虽然其中蕴含着十分有趣的数学，但是我们最好先从它的实际意义，以及">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/01/16/5c3ea355f2357.png">
+<meta property="og:updated_time" content="2019-01-16T11:22:24.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一种交互介绍--傅里叶变化">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;傅里叶变换是一个有趣的工具。这篇文章主要内容是：  解释傅里叶变换的作用 它的变形使用 你如何使用它来做些漂亮的东西   文章之后你会对以下问题有个了解：  什么是傅里叶变换 傅里叶变换的一些实用场景 傅里叶变换的一些毫无意义但是又很cool的用法  &amp;emsp;&amp;emsp;我们现在需要先把数学和方程搁置一边，虽然其中蕴含着十分有趣的数学，但是我们最好先从它的实际意义，以及">
+<meta name="twitter:image" content="https://i.loli.net/2019/01/16/5c3ea355f2357.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://davisnathan.github.io/2019/01/14/一种交互介绍-傅里叶变化/">
+
+
+
+
+
+  <title>一种交互介绍--傅里叶变化 | Nathan Studio</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/davisNathan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nathan Studio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">welcome</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davisnathan.github.io/2019/01/14/一种交互介绍-傅里叶变化/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Davis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nathan Studio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">一种交互介绍--傅里叶变化</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-14T16:02:19+08:00">
+                2019-01-14
+              </time>
+            
+
+            
+            
+            
+            
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/HackerNews/" itemprop="url" rel="index">
+                    <span itemprop="name">HackerNews</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+        <div class="post-gallery" itemscope="" itemtype="http://schema.org/ImageGallery">
+          
+          
+            <div class="post-gallery-row">
+              <a class="post-gallery-img fancybox" href="https://i.loli.net/2019/01/16/5c3ea355f2357.png" rel="gallery_cjszipcri0012qvjyvlrghx2p" itemscope="" itemtype="http://schema.org/ImageObject" itemprop="url">
+                <img src="https://i.loli.net/2019/01/16/5c3ea355f2357.png" itemprop="contentUrl">
+              </a>
+            
+          
+
+          
+          </div>
+        </div>
+      
+
+      
+        <p>&emsp;&emsp;傅里叶变换是一个有趣的工具。这篇文章主要内容是：</p>
+<ul>
+<li>解释傅里叶变换的作用</li>
+<li>它的变形使用</li>
+<li>你如何使用它来做些漂亮的东西</li>
+</ul>
+<p><img src="https://i.loli.net/2019/01/16/5c3e93a55c58b.png" alt="Fourier2.png"><br><img src="https://i.loli.net/2019/01/16/5c3e93984e47a.png" alt="Fourier1.png"></p>
+<p>文章之后你会对以下问题有个了解：</p>
+<ul>
+<li>什么是傅里叶变换</li>
+<li>傅里叶变换的一些实用场景</li>
+<li>傅里叶变换的一些毫无意义但是又很cool的用法</li>
+</ul>
+<p>&emsp;&emsp;我们现在需要先把数学和方程搁置一边，虽然其中蕴含着十分有趣的数学，但是我们最好先从它的实际意义，以及为什么你会使用它开始。</p>
+<h3 id="它是啥"><a href="#它是啥" class="headerlink" title="它是啥"></a>它是啥</h3><p>&emsp;&emsp;简言之，傅里叶变换是一种将东西分解成正弦波的方式，像往常一样，这个名字的由来是因为很久以前的一个叫傅里叶的人。</p>
+<p>&emsp;&emsp;让我由一些简单的例子开始，首先，我们看一下波的模式，其随着时间的推移变换。</p>
+<p>这里有个例子：<img src="https://i.loli.net/2019/01/16/5c3e942f3dc0f.png" alt="Fourier3.png"></p>
+<p>&emsp;&emsp;这里的波形图可以分解为正弦波，也就是说，当我们叠加两个正弦图时，我们能得到原始波形图。</p>
+<p>&emsp;&emsp;傅里叶变换是一种我们用来合成波，或者得到原波形图的正弦波的一种方式，在这个例子中，你几乎可以在脑海中完成这一过程，当你看到原波形图的时候。</p>
+<p>&emsp;&emsp;为什么呢？我们现实中有许多事物实际上是基于正弦波的。我们通常称它为波的频率。</p>
+<p>&emsp;&emsp;在这众多的现象中，我们拿声音来举例，当我们听到声音时，我们没有听到波浪线，我们实际上听到的是不同的正弦波频率组成的声响。</p>
+<p>&emsp;&emsp;我们通过用电脑来分离这些波使我们来了解人们实际听到的是什么。我们可以明白什么是高音，什么是低音，声音的内容又是什么。</p>
+<p>&emsp;&emsp;我们也可以在看起来不那么像正弦波的波使用这一过程。来看这个方波：<br><img src="https://i.loli.net/2019/01/16/5c3e9478459cf.png" alt="Fourier4.png"><br>&emsp;&emsp;他依然可以被正弦波分解，虽然他看起来和正弦波区别这么大。让我们用技术手段更多的呈现这一过程，当我们加入更多的正弦波的时候，这个波形越来越接近我们开始的方波。视觉上，你会注意到，其实一开始的几个波产生的影响比较大。当波浪再叠加的时候，会看到波形图开始摇摆，当我们继续进行波形的叠加的时候，摇摆会趋于平坦。</p>
+<p>&emsp;&emsp;当你在听这个声波的时候，你会听到声音变低，因为我们在移除高频。无论你画出什么样的波形图，都可以用正弦波叠加的方式合成它。</p>
+<p>&emsp;&emsp;我们当然可以通过这样的方式去得到我们最后想要的结果。我们使用傅里叶变换，我们能得到声音最重要的部分，而且存储最后与声音最为相似的部分。通常在计算机上，我们将波存储为一系列的点。<br><img src="https://i.loli.net/2019/01/16/5c3e9551cd94e.png" alt="Fourier5.png"><br>&emsp;&emsp;我们能做的是使用一系列的正弦波来表示它，之后我们通过忽略较小的频率来将它压缩，最后得到的结果虽然略有差异，但是他听起来还是极其接近于同一个人的声音。</p>
+<p>&emsp;&emsp;这就是MP3干的事儿，他知道什么需要存储起来，什么需要抛弃。由此，我们可以使用傅里叶变化去理解波形的基本参数点，然后可以对其进行压缩。现在我们来深入探讨一下傅里叶变换。接下来的模块会十分精彩，但它依旧能使你更深入的认识傅里叶变换。</p>
+<h3 id="本轮"><a href="#本轮" class="headerlink" title="本轮"></a>本轮</h3><p>&emsp;&emsp;现在，我们说把事物分解成正弦波，这里的正弦波不再是一般的正弦波，他们是3D的，你可以称他们为“复杂正弦波”，也可以称他们为“螺旋”。看这边，他们看起来像正弦波，当当我们从正面看时，他们看起来像个圆。<br><img src="https://i.loli.net/2019/01/16/5c3e9599c382c.png" alt="Fourier6.png"><br>&emsp;&emsp;到目前为止，我们所做的一切只需要2D正弦波，当我们对2D波进行傅里叶变换，那些复杂的部分被抛弃，我们最终得到了正弦波。但是我们可以用3D正弦波做出一些有趣的玩意儿。你看：<br><img src="https://i.loli.net/2019/01/16/5c3e95f134c08.png" alt="Fourier7.png"><br>&emsp;&emsp;我们 可以想象出来这个绘画的3D图，因为他们的移动时随着时间的变化变化的。想象某人画了这个手的图片，其由三个维度的向量代表笔尖此刻的位置。X，Y向量告诉我们位置，时间维度是那个时刻的时间。<br><img src="https://i.loli.net/2019/01/16/5c3e96513efc7.png" alt="Fourier8.png"><br>&emsp;&emsp;现在我们得到了3D模式，我们不能用旧的2D正弦波来表示他，无论用多少2<br>D正弦波来调试，都永远无法得到3D图形。所以我们需要些别的东西。为何不像之前那样加载一些3D正弦波，当我们加载一定数量的3D正弦波时，我们开始看到像3D模式一样的效果出来。请记得，当我们从正面观看这些波时，他们看上去就是个圆，这种围绕另外一个圆圈旋转的圆圈我们称他们为<a href="https://zh.wikipedia.org/wiki/%E5%9D%87%E8%BC%AA%E5%92%8C%E6%9C%AC%E8%BC%AA" target="_blank" rel="noopener"><strong>本轮</strong></a>。</p>
+<p>&emsp;&emsp;就像之前一样，我们通过一些圆就能很好的还原之前我们设计的图像。因为这是一个简单的图案，所有最后的波形叠加，都是为了使边缘变得平滑，其实所有的图案都可以按照这样的方法进行绘制。</p>
+<p>&emsp;&emsp;再一次，你所看到的几乎所有图像，都可以用几个圆进行无限的接近它，而不是记录所有的图像点。我们可以使用它作为实际的数据格式。事实上已经存在这样的数据格式了，叫做SVG。</p>
+<h3 id="JPEGs"><a href="#JPEGs" class="headerlink" title="JPEGs"></a>JPEGs</h3><p>&emsp;&emsp;你知道傅里叶变换被用于图像吗？事实上，我们经常使用到他，因为这就是JPEGs工作的方式。我们将其分解成大量的正弦波，然后只储存最重要的那些波形。</p>
+<p>&emsp;&emsp;我们需要一些不同的正弦波，去使无论我们给出什么样的图像，都能通过添加大量的正弦波把它还原出来。为了做到这一点，我们需要用图像表示成正弦波，我们使用有黑白色彩的图像，我们用每个图片的对比度来表示表示波的大小。我们需要些水平波，一些竖直波。<br><img src="https://i.loli.net/2019/01/16/5c3e96b77771b.png" alt="Fourier9.png"><br>&emsp;&emsp;就他们本身而言是不足以表示成我们想要的图像，所以还需要做一些操作，比如两个图像相乘。8X8的图像，这里有所有我们需要的图像。</p>
+<p>&emsp;&emsp;当我们调节合适的对比度，之后使他们叠加，我们可以创建任何图像。随着我们添加越来越多的图像，我们最后的结果就越来越接近模型的图像，<br><img src="https://i.loli.net/2019/01/16/5c3e971f2bb58.png" alt="Fourier10.png"><br><img src="https://i.loli.net/2019/01/16/5c3e9720b7629.png" alt="Fourier11.png"><br>&emsp;&emsp;图像被分为8X8的块，块与块之间分开，我们使用一组频率来表示像素点的明暗，再用另外两个集合来表示它的颜色，一组是红-绿，一组是黄-蓝。每个块的频率表示了JPEG的质量。</p>
+<h3 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h3><p>来一起回顾一下：</p>
+<ul>
+<li>傅里叶变换是一种能使事物分解成一些频率的东西</li>
+<li>频率告诉我们一些关于数据的信息</li>
+<li>通过存储重要的频率进行数据的压缩</li>
+<li>我们可以用一系列的圆圈去制作一些有趣的图案</li>
+</ul>
+<p>&emsp;&emsp;这些都是它表面的应用，傅里叶变换是个十分强大的工具，因为分解频率是这么的根本，他们被应用的领域十分广泛，包括，电路设计，电话信号，核磁共振成像MRI，量子物理等。</p>
+<h3 id="深入问题"><a href="#深入问题" class="headerlink" title="深入问题"></a>深入问题</h3><p>&emsp;&emsp;在前文中我跳过了许多数学的问题，但是如果你想深入研究他的原理，这里有一些问题没准能成为你研究的帮助：</p>
+<ul>
+<li>怎样用数学方程来表示傅里叶变换？</li>
+<li>离散时间傅里叶变换和连续时间傅里叶变换有什么区别？</li>
+<li>如何计算傅里叶变换？</li>
+<li>如何对整首歌进行傅里叶变换？（而不是仅仅单个音符）</li>
+</ul>
+<h3 id="延伸阅读"><a href="#延伸阅读" class="headerlink" title="延伸阅读"></a>延伸阅读</h3><p>这里有一些资源，能帮助大家深入的阅读：</p>
+<p><a href="https://betterexplained.com/articles/an-interactive-guide-to-the-fourier-transform/" target="_blank" rel="noopener">An Interactive Guide To The Fourier Transform</a></p>
+<p><a href="https://www.youtube.com/watch?v=spUNpyF58BY" target="_blank" rel="noopener">But what is the Fourier Transform? A visual introduction.</a></p>
+<p><a href="https://alex.miller.im/posts/fourier-series-spinning-circles-visualization/" target="_blank" rel="noopener">A Tale of Math &amp; Art: Creating the Fourier Series Harmonic Circles Visualization</a></p>
+<p><a href="https://en.wikipedia.org/wiki/Fourier_transform" target="_blank" rel="noopener">Fourier transform (Wikipedia)</a></p>
+<blockquote>
+<p>&emsp;&emsp;点击查看：<a href="http://www.jezzamon.com/fourier/index.html" target="_blank" rel="noopener"><strong>原文</strong></a>，漂亮的UI。本人译文水平有限，仍在学习改进。原文中有动图演示。</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/fried-rice/" rel="tag"># fried-rice</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/07/如何入门计算机图形编程/" rel="next" title="如何入门计算机图形编程">
+                <i class="fa fa-chevron-left"></i> 如何入门计算机图形编程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/01/17/当人走到70岁时的喜悦/" rel="prev" title="当人走到70岁时的喜悦">
+                当人走到70岁时的喜悦 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg" alt="Davis">
+            
+              <p class="site-author-name" itemprop="name">Davis</p>
+              <p class="site-description motion-element" itemprop="description">For the first time as a chef</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#它是啥"><span class="nav-number">1.</span> <span class="nav-text">它是啥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本轮"><span class="nav-number">2.</span> <span class="nav-text">本轮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JPEGs"><span class="nav-number">3.</span> <span class="nav-text">JPEGs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结论"><span class="nav-number">4.</span> <span class="nav-text">结论</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#深入问题"><span class="nav-number">5.</span> <span class="nav-text">深入问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#延伸阅读"><span class="nav-number">6.</span> <span class="nav-text">延伸阅读</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>
