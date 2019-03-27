@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Jack Daniel's,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;文章译自 Jack Schaedler， 2016年在 柏林 撰写的博客。此项目在这里开源，欢迎维护或建立分支。  &amp;emsp;&amp;emsp;50年前，RAND公司开发了一款图形输入语言系统：Graphical Input Language software system (GRAIL)。在1966年的RAND备忘录中，GRAIL旨在：提供一种方法可以让用户直接的，自然的，">
+<meta name="keywords" content="Jack Daniel&#39;s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重温GRAIL笔记识别">
+<meta property="og:url" content="https://davisnathan.github.io/2019/03/26/重温GRAIL笔记识别/index.html">
+<meta property="og:site_name" content="Nathan Studio">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;文章译自 Jack Schaedler， 2016年在 柏林 撰写的博客。此项目在这里开源，欢迎维护或建立分支。  &amp;emsp;&amp;emsp;50年前，RAND公司开发了一款图形输入语言系统：Graphical Input Language software system (GRAIL)。在1966年的RAND备忘录中，GRAIL旨在：提供一种方法可以让用户直接的，自然的，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/03/26/5c99ead3348f0.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/26/5c99ec93e9a0d.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/26/5c99ec94122ec.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9adbae7a4b6.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9adbaeed6fb.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9adc5385b9d.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9adc540e3e0.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9adcc433b06.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9adcc4185c2.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ade574c6d3.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ade573f9f9.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ade57caaa5.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ade57bd3e4.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae2859197a.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae28fc0b8d.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae2d08f2ed.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae38709b54.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae39404ff3.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae39f2096f.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae586083cb.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae5866ef41.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae5c4c8664.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9ae667ec7eb.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9aec72393cd.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9aeffe55ffc.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9b250b7e575.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9b25ea40fe0.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9b265206135.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/27/5c9b26784014b.png">
+<meta property="og:updated_time" content="2019-03-27T08:03:46.654Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重温GRAIL笔记识别">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;文章译自 Jack Schaedler， 2016年在 柏林 撰写的博客。此项目在这里开源，欢迎维护或建立分支。  &amp;emsp;&amp;emsp;50年前，RAND公司开发了一款图形输入语言系统：Graphical Input Language software system (GRAIL)。在1966年的RAND备忘录中，GRAIL旨在：提供一种方法可以让用户直接的，自然的，">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/26/5c99ead3348f0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"right","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://davisnathan.github.io/2019/03/26/重温GRAIL笔记识别/">
+
+
+
+
+
+  <title>重温GRAIL笔记识别 | Nathan Studio</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail">
+    <div class="headband"></div>
+    <a href="https://github.com/davisNathan"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_darkblue_121621.png" alt="Fork me on GitHub"></a>
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Nathan Studio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">welcome</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://davisnathan.github.io/2019/03/26/重温GRAIL笔记识别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Davis">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Nathan Studio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">重温GRAIL笔记识别</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-26T15:09:05+08:00">
+                2019-03-26
+              </time>
+            
+
+            
+            
+            
+            
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/HackerNews/" itemprop="url" rel="index">
+                    <span itemprop="name">HackerNews</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>&emsp;&emsp;文章译自 Jack Schaedler， 2016年在 柏林 撰写的<a href="https://jackschaedler.github.io/handwriting-recognition/" target="_blank" rel="noopener">博客</a>。此项目在这里<a href="https://github.com/jackschaedler/handwriting-recognition" target="_blank" rel="noopener">开源</a>，欢迎维护或建立分支。</p>
+</blockquote>
+<p>&emsp;&emsp;50年前，RAND公司开发了一款图形输入语言系统：Graphical Input Language software system (GRAIL)。在1966年的RAND备忘录中，GRAIL旨在：提供一种方法可以让用户直接的，自然的，和容易的处理他们的问题。</p>
+<p>&emsp;&emsp;用户使用笔式仪器和平板电脑与GRAIL沟通。GRAIL没鼠标，没键盘，没按钮，没有操纵杆，也没有其他相关的工具。当用户想在屏幕上有一个方框，他们就画一个方框。当用户需要文本在屏幕上，他们就会手写文本。当你今天去翻当年的<a href="https://www.youtube.com/watch?reload=9&amp;v=p2LZLYcu_JY&amp;feature=youtu.be&amp;t=24m30s" target="_blank" rel="noopener">demo</a>，它依然让人感觉到优雅和神奇。</p>
+<h3 id="RAND平板电脑"><a href="#RAND平板电脑" class="headerlink" title="RAND平板电脑"></a>RAND平板电脑</h3><p>&emsp;&emsp;人们使用RAND电脑与GRAIL互动。用类似笔的仪器将系统的所有输入绘制到RAND平板电脑的表面上。平板电脑有较高的分辨率，使其能够精确地数字化超过一百万个离散笔位。压敏开关安装在笔尖上，每4毫秒将触笔的位置报告给GRAIL作为一对（x，y）坐标。</p>
+<p>&emsp;&emsp;用户通过RAND平板电脑与阴极管（CRT）显示器，和计算机通信。当有书写动作：笔按在平板电脑上时，笔中的开关关闭，从而通知中央处理单元（CPU） “下笔动作” 。当笔被抬起时，笔开关打开，从而通知CPU“抬笔”动作。当笔在书写表面上移动时，识别方案于每4毫秒反馈其所在的位置。</p>
+<h3 id="平滑"><a href="#平滑" class="headerlink" title="平滑"></a>平滑</h3><p>&emsp;&emsp;你可能已经注意到，开始的记录会有难看的微小噪点和锯齿形状。原因是：平板电脑只能反馈离散网格上笔的位置。这意味着，即使是平滑的曲线，也会在被平板电脑捕捉后不可避免的包含锯齿状噪点。</p>
+<p><img src="https://i.loli.net/2019/03/26/5c99ead3348f0.png" alt="grail1.png"></p>
+<p>&emsp;&emsp;Groner决定平滑输出。下图可以让你了解像素化或离散化对绘制笔迹滑动的影响。图一为实际笔迹放大的图，图二为图一经过平滑之后呈现的图。</p>
+<p>图一：<br><img src="https://i.loli.net/2019/03/26/5c99ec93e9a0d.png" alt="grail2.png"></p>
+<p>图二：<br><img src="https://i.loli.net/2019/03/26/5c99ec94122ec.png" alt="grail3.png"></p>
+<p>&emsp;&emsp;怎么实现平滑呢？平滑是通过缩短该点与左边最邻近值的距离产生。这种简单的平滑方案允许我们保持笔画的整体形态的同时消除不必要的锯齿数据。但请注意，平滑是个破坏性的过程，因此选择合适的平滑因子至关重要。以下分别是不同平滑因子得出的效果，蓝线为原始笔记，灰色线为经过平滑之后的笔记，来感受一下：</p>
+<p>平滑因子为25%时：<br><img src="https://i.loli.net/2019/03/27/5c9adbae7a4b6.png" alt="grail4.png"><br><img src="https://i.loli.net/2019/03/27/5c9adbaeed6fb.png" alt="grail5.png"></p>
+<p>平滑因子为50%时：<br><img src="https://i.loli.net/2019/03/27/5c9adc5385b9d.png" alt="grail6.png"><br><img src="https://i.loli.net/2019/03/27/5c9adc540e3e0.png" alt="grail7.png"></p>
+<p>平滑因子为75%时：<br><img src="https://i.loli.net/2019/03/27/5c9adcc433b06.png" alt="grail8.png"><br><img src="https://i.loli.net/2019/03/27/5c9adcc4185c2.png" alt="grail9.png"></p>
+<p>&emsp;&emsp;可以看出，平滑因子不同，收缩比例不同，平滑效果不一样。<br><img src="https://i.loli.net/2019/03/27/5c9ade574c6d3.png" alt="grail10.png"><br><img src="https://i.loli.net/2019/03/27/5c9ade573f9f9.png" alt="grail11.png"><br><img src="https://i.loli.net/2019/03/27/5c9ade57caaa5.png" alt="grail12.png"><br><img src="https://i.loli.net/2019/03/27/5c9ade57bd3e4.png" alt="grail13.png"></p>
+<h3 id="细化"><a href="#细化" class="headerlink" title="细化"></a>细化</h3><p>&emsp;&emsp;你可能会发现有大量密集的点，尤其是在平板电脑上非常缓慢移动的时候。我们关心笔记的形状，所以大多数的点是不必要的。由此细化的原理为：以第一个数据点为中心，绘制一个正方形，位于该区域的所有非中心点都被丢弃，然后将此正方形移动到下一个落在正方形以外的点上，重复该过程。方形的大小决定了笔划变薄的程度，如下图所示：</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9ae2859197a.png" alt="grail14.png"><br><img src="https://i.loli.net/2019/03/27/5c9ae28fc0b8d.png" alt="grail15.png"><br><img src="https://i.loli.net/2019/03/27/5c9ae2d08f2ed.png" alt="grail16.png"></p>
+<p>&emsp;&emsp;Groner发现，即使丢弃了大约70％的原始数据点，他也能取得令人满意的结果。</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9ae38709b54.png" alt="grail17.png"><br><img src="https://i.loli.net/2019/03/27/5c9ae39404ff3.png" alt="grail18.png"><br><img src="https://i.loli.net/2019/03/27/5c9ae39f2096f.png" alt="grail19.png"></p>
+<h3 id="曲率"><a href="#曲率" class="headerlink" title="曲率"></a>曲率</h3><p>&emsp;&emsp;曲率是最明显的轨道特征，它与位置和大小无关，但它描述了轨道的形状。在平滑和稀疏输入之后，为每个数据点分配方向。有点令人震惊的是，Groner发现在描述笔画曲率时只考虑基本方向就足够了。因此，每个点被认为是向上，向下，向左或向右移动的结果。我们可以用矩形来测绘这种方向的变化：如果此矩形宽于高，则该点必须表示向左或向右移动。如果矩形高于宽度，则该点必须是向上或向下移动的结果。</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9ae586083cb.png" alt="grail20.png"><br><img src="https://i.loli.net/2019/03/27/5c9ae5866ef41.png" alt="grail21.png"><br><img src="https://i.loli.net/2019/03/27/5c9ae5c4c8664.png" alt="grail22.png"></p>
+<p>&emsp;&emsp;如果相同的方向连续出现两次，并且与序列中最后一个方向不同，则将其保存，否则，丢弃该方向。</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9ae667ec7eb.png" alt="grail23.png"></p>
+<h3 id="转角"><a href="#转角" class="headerlink" title="转角"></a>转角</h3><p>&emsp;&emsp;虽然可以使用每个笔划的曲率来对用户的意图做出明智的猜测，但是仅使用方向信息不能将一些符号彼此区分开。例如，“ 5 ”和“ S ”可以这样绘制，即两者都将产生相同的方向段◀▼▶▼◀。同样，圆形和矩形也可能产生▶▼◀▲▶。Groner决定使用角落的存在或不存在来解决这些模棱两可的问题。例如，“ 5 ”通常用符号左侧的一个或两个角绘制，而“ S ”通常会在没有任何角落的情况下绘制。同样，通过检查角的存在，可以将矩形与圆区分开。</p>
+<p>&emsp;&emsp;通过检测方向改变的程度和区域可以标出corner。例如：</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9aec72393cd.png" alt="grail24.png"></p>
+<h3 id="尺寸和位置特征"><a href="#尺寸和位置特征" class="headerlink" title="尺寸和位置特征"></a>尺寸和位置特征</h3><p>&emsp;&emsp;该描述允许我们轻松回答诸如“用户是否开始在左上方绘制此符号，并在右下方停止绘图？”之类的问题。如果此问题的答案为是，则用户很可能有意绘制2或ž。“用户是否将笔从表面非常靠近开始绘制的位置抬起？”如果是这样，那么用户可能会想要画一个像O或8那样的闭合笔画。笔划描述还捕获笔画的简单特征，如宽度，高度和纵横比。这些功能使我们能够回答诸如“你会将符号描述为胖还是瘦？”这样的问题。这个问题的答案可能有助于我们区分7和1。</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9aeffe55ffc.png" alt="grail25.png"></p>
+<h3 id="字符识别"><a href="#字符识别" class="headerlink" title="字符识别"></a>字符识别</h3><p>&emsp;&emsp;符号的识别是基于数据序列集的决策过程。在决策过程的每一步都有几个潜在的识别。其中通过关键特征来消除不可能的项。因此决策方案具有树形结构。</p>
+<p>&emsp;&emsp;识别器首先根据笔划的前四个主要方向生成潜在字符列表。通常不会因为这个元素就排除了所有不可能集合。我们将留下潜在字符列表。例如，以▶▼◀▲开头的笔划可能最终为O，2或3。</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9b250b7e575.png" alt="grail26.png"></p>
+<p>&emsp;&emsp;虽然在绘制给定字符时大都遵循一般形状，但Groner的方法足够强大，以便在绘制字符时允许大量的变化和异常。例如，以下所有笔划将被标识为数字3。</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9b25ea40fe0.png" alt="grail27.png"></p>
+<p>以下为实例流程：</p>
+<p><img src="https://i.loli.net/2019/03/27/5c9b265206135.png" alt="grail28.png"><br><img src="https://i.loli.net/2019/03/27/5c9b26784014b.png" alt="grail29.png"></p>
+<h3 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h3><p>&emsp;&emsp;为什么我要翻译这篇文章，这个算法看起来是50年前“老旧”的算法。但是50年前就有人用机器学习算法，就好像上个月看的《夏日大作战》为2009年上映的电影。2009年我在干啥？我在玩祖玛，听着《大哥》的英文版玩祖玛。用老旧的台式机，“极端”的硬件环境向同学考各种资源，憧憬着有一天我有自己的家，并且住在海边，就像现在这样。</p>
+<p>&emsp;&emsp;算法并不是要让人觉得这是个很高深的玩意儿，算法是要更好的让人享受生命的过程，不论是对coders还是users。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Jack-Daniel-s/" rel="tag"># Jack Daniel's</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/08/以图的形式看矩阵和概率/" rel="next" title="以图的形式看矩阵和概率">
+                <i class="fa fa-chevron-left"></i> 以图的形式看矩阵和概率
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="https://i.loli.net/2019/01/16/5c3ec9a30cf70.jpg" alt="Davis">
+            
+              <p class="site-author-name" itemprop="name">Davis</p>
+              <p class="site-description motion-element" itemprop="description">For the first time as a chef</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RAND平板电脑"><span class="nav-number">1.</span> <span class="nav-text">RAND平板电脑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平滑"><span class="nav-number">2.</span> <span class="nav-text">平滑</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#细化"><span class="nav-number">3.</span> <span class="nav-text">细化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#曲率"><span class="nav-number">4.</span> <span class="nav-text">曲率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#转角"><span class="nav-number">5.</span> <span class="nav-text">转角</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#尺寸和位置特征"><span class="nav-number">6.</span> <span class="nav-text">尺寸和位置特征</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#字符识别"><span class="nav-number">7.</span> <span class="nav-text">字符识别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后记"><span class="nav-number">8.</span> <span class="nav-text">后记</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; 2018 &mdash; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-"></i>
+  </span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+  <script type="text/javascript" src="/js/src/exturl.js?v=5.1.4"></script>
+
+
+</body>
+</html>
